@@ -4,7 +4,7 @@ Library          SeleniumLibrary
 Library          Collections
 Library          ../customLibraries/Shop.py
 Library          ../customLibraries/OpenBrowser.py
-Test Setup       Open the browser with the Mortgage payment url
+Test Setup       Open Page    https://rahulshettyacademy.com/loginpagePractise/    Firefox
 
 Suite Setup
 Suite Teardown
@@ -19,13 +19,15 @@ Resource         ../PO/ShopPage.robot
 
 
 *** Test Cases ***
-#Validate UnSuccessful Login
-#    LandingPage.Fill the login form    ${username}    ${invalid_password}
-#    LandingPage.Wait until element is visible on page
-#    LandingPage.Verify error message is correct
+Validate UnSuccessful Login
+    [Tags]    SMOKE    REGRESSION
+    LandingPage.Fill the login form    ${username}    ${invalid_password}
+    LandingPage.Wait until element is visible on page
+    LandingPage.Verify error message is correct
 
 
 Validate cards display in the Shopping page
+    [Tags]    REGRESSION
     LandingPage.Fill the login form    ${username}    ${valid_password}
     ShopPage.Wait until element is visible on page
     ShopPage.Verify card titles in the shop page

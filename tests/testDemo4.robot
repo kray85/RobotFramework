@@ -2,8 +2,8 @@
 Documentation    To Validate the Login form
 Library    SeleniumLibrary
 Library    ../customLibraries/OpenBrowser.py
+Resource    ../PO/Generic.robot
 Test Teardown    Close The Browser
-
 Test Template    Validate UnSuccessful Login
 
 *** Variables ***
@@ -19,7 +19,7 @@ Special characters    @#2           learning
 *** Keywords ***
 Validate UnSuccessful Login
     [Arguments]    ${username}    ${password}
-    Open Page    https://rahulshettyacademy.com/loginpagePractise/    ${BROWSER}
+    Open Page    https://rahulshettyacademy.com/loginpagePractise/    ${browser_name}
     Fill the login form    ${username}    ${password}
     Wait until it checks and displays error message
     Verify error message is correct

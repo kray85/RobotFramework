@@ -3,7 +3,7 @@ Documentation    To Validate the Login form
 Library          SeleniumLibrary
 Library          Collections
 Library          ../customLibraries/OpenBrowser.py
-Test Setup       Open Page    https://rahulshettyacademy.com/loginpagePractise/    Firefox
+Test Setup       Open Page    https://rahulshettyacademy.com/loginpagePractise/    ${browser_name}
 Test Teardown    Close Browser
 Resource         ../PO/Generic.robot
 Resource         ../PO/ShopPage.robot
@@ -15,6 +15,7 @@ Resource         ../PO/LandingPage.robot
 
 *** Test Cases ***
 Validate UnSuccessful Login
+    [Tags]    SMOKE
     Fill the login form    ${username}    ${invalid_password}
     Wait until element is visible on page    ${Error_Message_Login}
     Verify error message is correct

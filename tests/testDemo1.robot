@@ -2,17 +2,17 @@
 Documentation    To Validate the Login form
 Library    SeleniumLibrary
 Library    ../customLibraries/OpenBrowser.py
-#Test Teardown    Close Browser
+Resource    ../PO/Generic.robot
 
 
 *** Variables ***
-${BROWSER}    Chrome
+${BROWSER}    Firefox
 ${Error_Message_Login}    css:.alert.alert-danger
 
 *** Test Cases ***
 Validate UnSuccessful Login
 #    Open the browser with the Mortgage payment url
-    Open Page    https://rahulshettyacademy.com/    ${BROWSER}
+    Open Page    https://rahulshettyacademy.com/    ${browser_name}
 #    Fill the login form
 #    Wait until it checks and displays error message
 #    Verify error message is correct

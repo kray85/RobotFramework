@@ -78,3 +78,5 @@ pabot_results/
 
 *.xml
 *.html
+
+*.pyc

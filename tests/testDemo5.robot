@@ -16,8 +16,9 @@ Login with user ${username} and password ${password}    xyc    123
 
 *** Keywords ***
 Validate UnSuccessful Login
+    [Tags]    NEWFEATURE
     [Arguments]    ${username}    ${password}
-    Open Page    ${url}    ${BROWSER}
+    Open Page    ${url}    ${browser_name}
     Fill the login form    ${username}    ${password}
     Wait until it checks and displays error message
     Verify error message is correct

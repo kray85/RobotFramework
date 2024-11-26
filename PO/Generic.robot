@@ -10,6 +10,7 @@ ${username}               rahulshettyacademy
 ${invalid_password}       123456
 ${valid_password}         learning
 ${url}                    https://rahulshettyacademy.com/loginpagePractise/
+${browser_name}           Chrome
 
 *** Variables ***
 
