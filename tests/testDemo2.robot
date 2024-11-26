@@ -2,9 +2,12 @@
 Documentation    To Validate the Login form
 Library          SeleniumLibrary
 Library          Collections
-Test Setup       Open the browser with the Mortgage payment url
+Library          ../customLibraries/OpenBrowser.py
+Test Setup       Open Page    https://rahulshettyacademy.com/loginpagePractise/    Firefox
 Test Teardown    Close Browser
-Resource         resource.robot
+Resource         ../PO/Generic.robot
+Resource         ../PO/ShopPage.robot
+Resource         ../PO/LandingPage.robot
 
 
 *** Variables ***

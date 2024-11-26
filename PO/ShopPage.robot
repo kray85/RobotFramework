@@ -2,6 +2,7 @@
 Documentation    All the page objects and keywords of the Landing page
 Library          SeleniumLibrary
 Library          Collections
+#Test Setup       Open Browser    ${url}    Chrome
 Resource         ../PO/Generic.robot
 
 *** Variables ***

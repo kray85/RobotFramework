@@ -72,3 +72,9 @@ venv.bak/
 .project
 .pydevproject
 
+# PaBot
+.pabotsuitenames
+pabot_results/
+
+*.xml
+*.html

@@ -2,9 +2,10 @@
 Documentation    To Validate the Login form
 Library    SeleniumLibrary
 Library    DataDriver    file=resources/data.csv    encoding=UTF-8
+Library    ../customLibraries/OpenBrowser.py
 Test Teardown    Close Browser
 Test Template    Validate UnSuccessful Login
-Resource    resource.robot
+Resource    ../PO/Generic.robot
 
 
 *** Variables ***
@@ -16,7 +17,7 @@ Login with user ${username} and password ${password}    xyc    123
 *** Keywords ***
 Validate UnSuccessful Login
     [Arguments]    ${username}    ${password}
-    Open the browser with the Mortgage payment url
+    Open Page    ${url}    ${BROWSER}
     Fill the login form    ${username}    ${password}
     Wait until it checks and displays error message
     Verify error message is correct

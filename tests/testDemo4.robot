@@ -19,8 +19,7 @@ Special characters    @#2           learning
 *** Keywords ***
 Validate UnSuccessful Login
     [Arguments]    ${username}    ${password}
-#    Open the browser with the Mortgage payment url
-    Open Page    https://rahulshettyacademy.com/loginpagePractise/
+    Open Page    https://rahulshettyacademy.com/loginpagePractise/    ${BROWSER}
     Fill the login form    ${username}    ${password}
     Wait until it checks and displays error message
     Verify error message is correct

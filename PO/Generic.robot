@@ -4,7 +4,6 @@ Documentation    A resource file with reusable keywords and variables
 ...              domain specific language.  They utilize keywords provided
 ...              by the imported SeleniumLibrary.
 Library    SeleniumLibrary
-
 *** Variables ***
 ${BROWSER}                Chrome
 ${username}               rahulshettyacademy
@@ -23,6 +22,10 @@ Open the browser with the Mortgage payment url
     Create Webdriver    ${BROWSER}    service=${service}    options=${options}
     Go To    ${url}
 
+open the browser with the url
+    [Arguments]    ${browser_name}
+    Create Webdriver    ${browser_name}    D:/source/PythonProject/RobotFramework/drivers/chromedriver.exe'
+    Go To    ${url}
 
 Wait Until element passed is located on Page
     [Arguments]    ${locator}

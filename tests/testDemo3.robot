@@ -3,13 +3,15 @@ Documentation    To Validate the Login form
 Library          SeleniumLibrary
 Library          Collections
 Library          String
-Test Setup       Open the browser with the Mortgage payment url
+Library          ../customLibraries/OpenBrowser.py
+Test Setup       Open Page      https://rahulshettyacademy.com/loginpagePractise/    Chrome
 Test Teardown    Close Browser
-Resource         resource.robot
+Resource         ../PO/Generic.robot
 
 
 *** Variables ***
 ${Error_Message_Login}    css:.alert.alert-danger
+#${email}     mentor@rahulshettyacademy.com
 
 *** Test Cases ***
 Validate Child Window Functionality
@@ -27,7 +29,7 @@ Select the link of child window
 Verify the user is switched to child window
     Switch Window    New
     ${text}=    Get Text    css:h1
-    Element Text Should Be    css:h2        ${text.upper()}
+    Element Text Should Be    css:h1        ${text.upper()}
 
 Grab the Email Id in the Child Window
     ${text}=    Get Text    css:.red

@@ -12,7 +12,7 @@ ${Error_Message_Login}    css:.alert.alert-danger
 *** Test Cases ***
 Validate UnSuccessful Login
 #    Open the browser with the Mortgage payment url
-    Open Page    https://rahulshettyacademy.com/
+    Open Page    https://rahulshettyacademy.com/    ${BROWSER}
 #    Fill the login form
 #    Wait until it checks and displays error message
 #    Verify error message is correct
