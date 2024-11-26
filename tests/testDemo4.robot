@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation    To Validate the Login form
 Library    SeleniumLibrary
-Test Teardown    Close Browser
+Library    ../customLibraries/OpenBrowser.py
+Test Teardown    Close The Browser
 
 Test Template    Validate UnSuccessful Login
 
@@ -18,7 +19,8 @@ Special characters    @#2           learning
 *** Keywords ***
 Validate UnSuccessful Login
     [Arguments]    ${username}    ${password}
-    Open the browser with the Mortgage payment url
+#    Open the browser with the Mortgage payment url
+    Open Page    https://rahulshettyacademy.com/loginpagePractise/
     Fill the login form    ${username}    ${password}
     Wait until it checks and displays error message
     Verify error message is correct

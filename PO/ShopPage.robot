@@ -8,6 +8,7 @@ Resource         ../PO/Generic.robot
 ${shop_card_elements}     css:.card-title
 @{list_of_products}    Blackberry    Nokia Edge
 ${shop_page_load}         css:.nav-link
+${url}    https://rahulshettyacademy.com/loginpagePractise/
 
 *** Keywords ***
 Wait until element is visible on page
