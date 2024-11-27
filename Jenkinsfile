@@ -6,7 +6,10 @@ pipeline {
             steps {
                 sh '''
                     #!/bin/bash
+                    set -e
+                    echo "Activating virtual environment..."
                     source tmp/jenkins/bin/activate
+                    echo "Installing Robot Framework and SeleniumLibrary..."
                     pip install robotframework
                     pip install robotframework-seleniumlibrary
                     echo "Robot Framework and SeleniumLibrary installed"
@@ -17,6 +20,8 @@ pipeline {
             steps {
                 sh '''
                     #!/bin/bash
+                    set -e
+                    echo "Activating virtual environment..."
                     source tmp/jenkins/bin/activate
                     echo "Activated virtual environment"
                     which robot
@@ -26,4 +31,3 @@ pipeline {
             }
         }
     }
-}
