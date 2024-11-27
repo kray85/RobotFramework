@@ -4,12 +4,17 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'pip install robotframework'
+                sh '''
+                    source tmp/jenkins/bin/activate
+                '''
             }
         }
         stage('Run Tests') {
             steps {
-                sh 'robot --variable browser_name:Firefox --include REGRESSION .'
+                sh '''
+                    source tmp/jenkins/bin/activate
+                    robot --variable browser_name:Firefox --include REGRESSION .
+                '''
             }
         }
     }
