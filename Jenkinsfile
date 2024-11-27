@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh '''
                     source tmp/jenkins/bin/activate
-                    robot --variable browser_name:Firefox --include REGRESSION .
+                    robot --variable browser_name:Firefox --include REGRESSION tests
                 '''
             }
         }
