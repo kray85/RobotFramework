@@ -19,7 +19,7 @@ pipeline {
                     echo "Activated virtual environment"
                     which robot
                     echo "Running tests..."
-                    robot --variable browser_name:Firefox --include REGRESSION tests
+                    robot --variable browser_name:Firefox --include REGRESSION /var/jenkins_home/workspace/RobotFramework/tests
                 '''
             }
         }
