@@ -5,6 +5,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
+                    #!/bin/bash
                     source tmp/jenkins/bin/activate
                     pip install robotframework
                     pip install robotframework-seleniumlibrary
@@ -15,6 +16,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '''
+                    #!/bin/bash
                     source tmp/jenkins/bin/activate
                     echo "Activated virtual environment"
                     which robot
