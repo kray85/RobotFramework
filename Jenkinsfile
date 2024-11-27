@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-            #!/bin/bash
                 sh '''
-                #!/bin/bash
                     set -e
                     echo "Activating virtual environment..."
                     source tmp/jenkins/bin/activate
