@@ -6,6 +6,9 @@ pipeline {
             steps {
                 sh '''
                     source tmp/jenkins/bin/activate
+                    pip install robotframework
+                    pip install robotframework-seleniumlibrary
+                    echo "Robot Framework installed"
                 '''
             }
         }
@@ -13,9 +16,9 @@ pipeline {
             steps {
                 sh '''
                     source tmp/jenkins/bin/activate
+                    echo "Running tests..."
                     robot --variable browser_name:Firefox --include REGRESSION tests
                 '''
             }
         }
     }
-}
