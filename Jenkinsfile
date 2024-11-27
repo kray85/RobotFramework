@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
+            #!/bin/bash
                 sh '''
+                #!/bin/bash
                     set -e
                     echo "Activating virtual environment..."
                     source tmp/jenkins/bin/activate
@@ -24,8 +26,9 @@ pipeline {
                     echo "Activated virtual environment"
                     which robot
                     echo "Running tests..."
-                    robot --variable browser_name:Firefox --include REGRESSION /var/jenkins_home/workspace/RobotFramework/tests
+                    robot --variable browser_name:Firefox --include REGRESSION /var/jenkins_home/workspace/RobotFramework/tests/tests
                 '''
             }
         }
     }
+
