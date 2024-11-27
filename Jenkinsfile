@@ -5,9 +5,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    source tmp/jenkins/bin/activate
-                    pip install robotframework
-                    pip install robotframework-seleniumlibrary
                     echo "Robot Framework and SeleniumLibrary installed"
                 '''
             }
@@ -19,7 +16,7 @@ pipeline {
                     echo "Activated virtual environment"
                     which robot
                     echo "Running tests..."
-                    robot --variable browser_name:Firefox --include REGRESSION tests
+                    robot --variable browser_name:Chrome --include REGRESSION tests
                 '''
             }
         }

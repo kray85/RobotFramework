@@ -8,7 +8,7 @@ class OpenBrowser:
     def __init__(self):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         drivers_dir = os.path.join(base_dir, '..', 'drivers')
-        self.chrome_driver_path = os.path.join(drivers_dir, 'chromedriver.exe')
+        self.chrome_driver_path = os.path.join(drivers_dir, 'chromedriver')
         self.firefox_driver_path = os.path.join(drivers_dir, 'geckodriver.exe')
         self.selLib = BuiltIn().get_library_instance('SeleniumLibrary')
 
