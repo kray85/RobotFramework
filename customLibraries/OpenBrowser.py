@@ -1,12 +1,15 @@
+import os
+
 from robot.libraries.BuiltIn import BuiltIn
 from selenium.webdriver.chrome.service import Service
 
 
 class OpenBrowser:
     def __init__(self):
-        self.chrome_driver_path = 'D:/source/PythonProject/RobotFramework/drivers/chromedriver.exe'
-        self.firefox_driver_path = 'D:/source/PythonProject/RobotFramework/drivers/geckodriver.exe'
-        # self.driver_path = driver_path
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        drivers_dir = os.path.join(base_dir, '..', 'drivers')
+        self.chrome_driver_path = os.path.join(drivers_dir, 'chromedriver.exe')
+        self.firefox_driver_path = os.path.join(drivers_dir, 'geckodriver.exe')
         self.selLib = BuiltIn().get_library_instance('SeleniumLibrary')
 
     def open_page(self, url, browser_name):
