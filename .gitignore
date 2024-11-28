@@ -80,3 +80,4 @@ pabot_results/
 *.html
 
 *.pyc
+customLibraries/__pycache__/Shop.cpython-312.pyc
