@@ -26,7 +26,7 @@ ${book_name}    Learn Robot/Selenium Frameworks
 
 
 Add Book into Library Database
-    &{req_body}=    Create Dictionary    name=${book_name}    isbn=sffsdf    aisle=34563    author=Jason Todd
+    &{req_body}=    Create Dictionary    name=${book_name}    isbn=retetert    aisle=456457    author=Jason Todd
     ${response}=    POST    ${base_url}/Library/Addbook.php    json=${req_body}
 #    Status Should Be    200
     log    ${response.json()}

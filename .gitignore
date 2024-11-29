@@ -26,7 +26,6 @@ wheels/
 MANIFEST
 
 # Robot Framework logs and reports
-output.xml
 log.html
 report.html
 debug.log
@@ -76,8 +75,7 @@ venv.bak/
 .pabotsuitenames
 pabot_results/
 
-*.xml
-*.html
+
 
 *.pyc
 customLibraries/__pycache__
