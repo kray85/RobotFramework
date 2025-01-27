@@ -9,7 +9,7 @@ Test Teardown    Close The Browser
 *** Variables ***
 ${browser_name}    Chrome
 ${Error_Message_Login}    css:.alert.alert-danger
-${env}    container
+${env}    windows
 ${email}    tetramedia85@gmail.com
 
 

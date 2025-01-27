@@ -1,139 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.13.0 on linux)" generated="2024-11-29T20:00:44.444874" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Demo7" source="/robot_selenium-tests/tests/api_test/test_demo7.robot">
-<test id="s1-t1" name="Add Book into Library Database" line="28">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-11-29T20:00:44.593325" level="INFO">&amp;{req_body} = { name=Learn Robot/Selenium Frameworks | isbn=retetert | aisle=456457 | author=Jason Todd }</msg>
-<var>&amp;{req_body}</var>
-<arg>name=${book_name}</arg>
-<arg>isbn=retetert</arg>
-<arg>aisle=456457</arg>
-<arg>author=Jason Todd</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-11-29T20:00:44.592943" elapsed="0.000414"/>
+<robot generator="Robot 7.1.1 (Python 3.12.8 on win32)" generated="2025-01-26T21:43:45.269059" rpa="false" schemaversion="5">
+<suite id="s1" name="testDemo3" source="D:\source\PythonProject\RobotFramework\tests\testDemo3.robot">
+<test id="s1-t1" name="Navigate to Free Access Page" line="23">
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-01-26T21:43:45.475388" elapsed="0.000000"/>
 </kw>
-<kw name="POST" owner="RequestsLibrary">
-<msg time="2024-11-29T20:00:45.455506" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php 
- path_url=/Library/Addbook.php 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '106', 'Content-Type': 'application/json'} 
- body=b'{"name": "Learn Robot/Selenium Frameworks", "isbn": "retetert", "aisle": "456457", "author": "Jason Todd"}' 
- </msg>
-<msg time="2024-11-29T20:00:45.455619" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Addbook.php 
- status=200, reason=OK 
- headers={'Date': 'Fri, 29 Nov 2024 20:00:43 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '50', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
- body={"Msg":"successfully added","ID":"retetert456457"} 
- </msg>
-<msg time="2024-11-29T20:00:45.455735" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${base_url}/Library/Addbook.php</arg>
-<arg>json=${req_body}</arg>
-<doc>Sends a POST request.</doc>
-<status status="PASS" start="2024-11-29T20:00:44.593541" elapsed="0.862216"/>
+<kw name="Given the user has accessed the 'https://rahulshettyacademy.com/loginpagePractise/' web page" source_name="the user has accessed the '${link}' web page">
+<kw name="Open Page" owner="OpenBrowser">
+<msg time="2025-01-26T21:43:45.476456" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-01-26T21:43:47.027909" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
+<arg>${link}</arg>
+<arg>Chrome</arg>
+<arg>windows</arg>
+<status status="PASS" start="2025-01-26T21:43:45.476456" elapsed="2.582342"/>
 </kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-11-29T20:00:45.456444" level="INFO">{'Msg': 'successfully added', 'ID': 'retetert456457'}</msg>
-<arg>${response.json()}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.455992" elapsed="0.000492"/>
+<status status="PASS" start="2025-01-26T21:43:45.476456" elapsed="2.583342"/>
 </kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${response.json()}</arg>
-<arg>ID</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.456634" elapsed="0.000374"/>
+<kw name="When the user clicks the new window link with text Free Access to InterviewQues/ResumeAssistance/Material" source_name="the user clicks the new window link with text ${link_text}">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-01-26T21:43:48.060797" level="INFO">Clicking link 'Free Access to InterviewQues/ResumeAssistance/Material'.</msg>
+<arg>${link_text}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-26T21:43:48.059798" elapsed="0.089999"/>
 </kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2024-11-29T20:00:45.457486" level="INFO">${book_id} = retetert456457</msg>
-<var>${book_id}</var>
-<arg>${response.json()}</arg>
-<arg>ID</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.457145" elapsed="0.000360"/>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" start="2025-01-26T21:43:48.150796" elapsed="0.011998"/>
 </kw>
-<kw name="Set Global Variable" owner="BuiltIn">
-<msg time="2024-11-29T20:00:45.457809" level="INFO">${book_id} = retetert456457</msg>
-<arg>${book_id}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.457652" elapsed="0.000192"/>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2025-01-26T21:43:50.748822" level="INFO">${title} = RS Academy</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-01-26T21:43:48.162794" elapsed="2.586028"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-11-29T20:00:45.458065" level="INFO">retetert456457</msg>
-<arg>${book_id}</arg>
+<msg time="2025-01-26T21:43:50.748822" level="INFO">RS Academy</msg>
+<arg>${title}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.457974" elapsed="0.000123"/>
+<status status="PASS" start="2025-01-26T21:43:50.748822" elapsed="0.000000"/>
 </kw>
-<kw name="Dictionary Should Contain Key" owner="Collections">
-<arg>${response.json()}</arg>
-<arg>Msg</arg>
-<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.458219" elapsed="0.000325"/>
+<status status="PASS" start="2025-01-26T21:43:48.059798" elapsed="2.689024"/>
 </kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2024-11-29T20:00:45.458995" level="INFO">${book_msg} = successfully added</msg>
-<var>${book_msg}</var>
-<arg>${response.json()}</arg>
-<arg>Msg</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.458670" elapsed="0.000343"/>
+<kw name="Then the user verifies text 'DOCUMENTS REQUEST' on the page" source_name="the user verifies text '${expected_text}' on the page">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-01-26T21:43:50.749821" level="INFO">Verifying element 'css:div.inner-box h1' contains exact text 'DOCUMENTS REQUEST'.</msg>
+<arg>css:div.inner-box h1</arg>
+<arg>${expected_text.upper()}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-01-26T21:43:50.749821" elapsed="0.017002"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-11-29T20:00:45.459276" level="INFO">successfully added</msg>
-<arg>${book_msg}</arg>
+<msg time="2025-01-26T21:43:50.766823" level="INFO">DOCUMENTS REQUEST</msg>
+<arg>${expected_text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.459189" elapsed="0.000116"/>
+<status status="PASS" start="2025-01-26T21:43:50.766823" elapsed="0.000000"/>
 </kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${response.json()}[Msg]</arg>
-<arg>successfully added</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.459425" elapsed="0.000351"/>
+<status status="PASS" start="2025-01-26T21:43:50.749821" elapsed="0.017002"/>
 </kw>
-<status status="PASS" start="2024-11-29T20:00:44.592158" elapsed="0.867762"/>
+<kw name="Then the user navigates to the 'Join Now' page" source_name="the user navigates to the '${link}' page">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-01-26T21:43:50.767822" level="INFO">Clicking link 'JOIN NOW'.</msg>
+<arg>${link.upper()}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-26T21:43:50.767822" elapsed="2.884165"/>
+</kw>
+<status status="PASS" start="2025-01-26T21:43:50.767822" elapsed="2.884165"/>
+</kw>
+<kw name="And the user verifies the 'Sign Up' in on page" source_name="the user verifies the '${expected_text}' in on page">
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2025-01-26T21:43:53.703941" level="INFO">Element 'xpath://div/h3' contains text 'Sign Up'.</msg>
+<arg>xpath://div/h3</arg>
+<arg>${expected_text}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2025-01-26T21:43:53.653811" elapsed="0.050130"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-01-26T21:43:53.704825" level="INFO">Sign Up</msg>
+<arg>${expected_text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-01-26T21:43:53.703941" elapsed="0.000884"/>
+</kw>
+<status status="PASS" start="2025-01-26T21:43:53.652874" elapsed="0.051951"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-01-26T21:43:53.704825" elapsed="2.537167"/>
+</kw>
+<tag>SMOKE</tag>
+<status status="PASS" start="2025-01-26T21:43:45.474534" elapsed="10.767458"/>
 </test>
-<test id="s1-t2" name="Get the Book Details for Current Book added" line="43">
-<kw name="GET" owner="RequestsLibrary">
-<msg time="2024-11-29T20:00:46.390467" level="INFO">GET Request : url=https://rahulshettyacademy.com/Library/GetBook.php?ID=retetert456457 
- path_url=/Library/GetBook.php?ID=retetert456457 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg time="2024-11-29T20:00:46.390549" level="INFO">GET Response : url=https://rahulshettyacademy.com/Library/GetBook.php?ID=retetert456457 
- status=200, reason=OK 
- headers={'Date': 'Fri, 29 Nov 2024 20:00:44 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '107', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
- body=[{"book_name":"Learn Robot\/Selenium Frameworks","isbn":"retetert","aisle":"456457","author":"Jason Todd"}] 
- </msg>
-<msg time="2024-11-29T20:00:46.390670" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
-<var>${get_response}</var>
-<arg>${base_url}/Library/GetBook.php</arg>
-<arg>params=ID=${book_id}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a GET request.</doc>
-<status status="PASS" start="2024-11-29T20:00:45.460650" elapsed="0.930043"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2024-11-29T20:00:46.391331" level="INFO">[{'book_name': 'Learn Robot/Selenium Frameworks', 'isbn': 'retetert', 'aisle': '456457', 'author': 'Jason Todd'}]</msg>
-<arg>${get_response.json()}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-11-29T20:00:46.390926" elapsed="0.000438"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${book_name}</arg>
-<arg>${get_response.json()}[0][book_name]</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2024-11-29T20:00:46.391490" elapsed="0.000358"/>
-</kw>
-<status status="PASS" start="2024-11-29T20:00:45.460187" elapsed="0.931800"/>
-</test>
-<status status="PASS" start="2024-11-29T20:00:44.446533" elapsed="1.945872"/>
+<doc>To Validate the Login form</doc>
+<status status="PASS" start="2025-01-26T21:43:45.271027" elapsed="10.971966"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">SMOKE</stat>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="Test Demo7">Test Demo7</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="testDemo3">testDemo3</stat>
 </suite>
 </statistics>
 <errors>
