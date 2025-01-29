@@ -12,6 +12,7 @@ class OpenBrowser:
         drivers_dir = os.path.join(base_dir, '../', 'drivers')
         self.chrome_driver_path = os.path.join(drivers_dir, 'chromedriver.exe')
         self.firefox_driver_path = os.path.join(drivers_dir, 'geckodriver.exe')
+        self.edge_driver_path = os.path.join(drivers_dir, 'msedgedriver.exe')
         self.selLib = BuiltIn().get_library_instance('SeleniumLibrary')
 
     def open_page(self, url, browser_name, env):
@@ -35,6 +36,10 @@ class OpenBrowser:
 
         elif browser_name.lower() == 'firefox':
             service = Service(executable_path=self.firefox_driver_path)
+            self.selLib.create_webdriver(browser_name, service=service)
+            
+        elif browser_name.lower() == 'edge':
+            service = Service(executable_path=self.edge_driver_path)
             self.selLib.create_webdriver(browser_name, service=service)
         else:
             raise ValueError(f"Unsupported browser: {browser_name}")
