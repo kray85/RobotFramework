@@ -84,3 +84,23 @@ class Shop():
         self.selLib.page_should_contain(success_message_locator)
 
         print("Checkout successful!")
+
+    @keyword(name="Get Card List Items")
+    def get_card_list_items(self, cardListTitles, card_title):
+        """
+        Get the list of items in the cart
+        :param locator: locator of the element
+        :return: list of items in the cart
+        """
+        
+        i = 1
+        
+        cardListTitles = self.selLib.get_webelements("css:.card-title")
+        
+        for cardListTitle in cardListTitles:
+            if cardListTitle.text == card_title:
+                print(cardListTitle.text + " is present in the cart")
+          
+            i = i + 1
+        
+      
