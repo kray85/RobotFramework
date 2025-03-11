@@ -5,7 +5,8 @@ Library          Collections
 Library          ../customLibraries/Shop.py
 Library          ../customLibraries/OpenBrowser.py
 Library    ../.venv/Lib/site-packages/robot/libraries/XML.py
-Test Setup       Open Page    https://rahulshettyacademy.com/loginpagePractise/    ${browser_name}    windows
+Test Setup       Open Page    http://127.0.0.1:5500/index.html    ${browser_name}    windows
+# Test Setup       Open Page    https://rahulshettyacademy.com/loginpagePractise/    ${browser_name}    windows
 Test Teardown    Close Browser
 Suite Setup
 Suite Teardown
@@ -15,30 +16,19 @@ Resource         ../PO/ShopPage.robot
 
 
 *** Variables ***
+@{CITIES}=   New York    Chicago
 
 
 *** Test Cases ***
-Fill the login form
-    [Tags]    SMOKE
-    Fill the login form    ${username}    ${valid_password}
+Get the card list item
+#     [Tags]    SMOKE
     Get Card Items
     
 
 *** Keywords ***
 
-Fill the login form
-    [Arguments]       ${username}    ${password}
-    Input Text        id:username    ${username}
-    Input Password    id:password    ${password}
-    Click Button      signInBtn
-    
+
 Get Card Items
-    ${card_items}=   Get WebElements    xpath://app-card
-    Get Card List Items    ${card_items}        Blackberry
+    ${city_items}=    Get city List Items   css:.city
+    Log Many    ${card_items}
     Sleep    10s
-    
-    FOR    ${card_item}    IN    @{card_items}
-        ${card_text}    Get Text    ${card_item}
-        
-        
-    END

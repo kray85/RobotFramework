@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>28</td>
+                <td class="city">New York</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>34</td>
+                <td class="city">Los Angeles</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Michael Johnson</td>
+                <td>45</td>
+                <td class="city">Chicago</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Emily Davis</td>
+                <td>22</td>
+                <td class="city">Houston</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>David Wilson</td>
+                <td>31</td>
+                <td class="city">Phoenix</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Sarah Brown</td>
+                <td>29</td>
+                <td class="city">Philadelphia</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>James Jones</td>
+                <td>40</td>
+                <td class="city">San Antonio</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Patricia Garcia</td>
+                <td>27</td>
+                <td class="city">San Diego</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Robert Martinez</td>
+                <td>33</td>
+                <td class="city">Dallas</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Linda Hernandez</td>
+                <td>36</td>
+                <td class="city">San Jose</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>William Clark</td>
+                <td>42</td>
+                <td class="city">Austin</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Barbara Rodriguez</td>
+                <td>38</td>
+                <td class="city">Jacksonville</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Charles Lewis</td>
+                <td>50</td>
+                <td class="city">Fort Worth</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Mary Lee</td>
+                <td>26</td>
+                <td class="city">Columbus</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Joseph Walker</td>
+                <td>37</td>
+                <td class="city">Charlotte</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="scripts.js"></script>
+</body>
+</html>
