@@ -16,7 +16,7 @@ Resource         ../PO/ShopPage.robot
 
 
 *** Variables ***
-@{CITIES}=   New York    Chicago
+@{CITIES}=        New York    Chicago    San Antonio    Fort Worth
 
 
 *** Test Cases ***
@@ -29,6 +29,10 @@ Get the card list item
 
 
 Get Card Items
-    ${city_items}=    Get city List Items   css:.city
-    Log Many    ${card_items}
-    Sleep    10s
+    FOR    ${element}    IN    @{CITIES}
+        Log    ${element}
+        ${city_items}=    Get Card List Items       css:.city       ${element}
+        
+    END
+
+    Sleep    20s

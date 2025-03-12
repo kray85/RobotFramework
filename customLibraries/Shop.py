@@ -88,7 +88,7 @@ class Shop():
 
         print("Checkout successful!")
 
-    @keyword(name="Get Card List Items and Delete Matching Cities")
+    @keyword(name="Get Card List Items")
     def get_card_list_items_and_delete_matching_cities(self, locator, expected_cities):
         """
         Get the list of items in the cart and delete matching cities
@@ -103,16 +103,22 @@ class Shop():
         city_texts = [element.text for element in city_elements]
 
         # Print the city texts for debugging
-        print("City texts:", city_texts)
+        # print("City texts:", city_texts)
 
         # Iterate over the city elements and click the delete button if the city is in the expected list
         for element in city_elements:
             city_name = element.text
             if city_name in expected_cities:
-                delete_button = element.find_element_by_xpath(
-                    "../following-sibling::td/button[@class='delete-btn']")
+                # Find the delete button in the same row
+                delete_button = element.find_element("xpath","./ancestor::tr//button[@class='delete-btn']")
                 delete_button.click()
                 print(f"Deleted city: {city_name}")
+                
+                # Wait for the modal to appear and click the confirm button
+                self.selLib.wait_until_element_is_visible("id:modal")
+                self.selLib.click_button("id:confirmDelete")
+                
+                print(f"Confirmed delete for city: {city_name}")
 
         return city_texts
 
