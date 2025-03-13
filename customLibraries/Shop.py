@@ -2,6 +2,7 @@ from re import search
 
 from robot.api.deco import library, keyword
 from robot.libraries.BuiltIn import BuiltIn
+from selenium.common.exceptions import NoSuchElementException
 
 
 @library
@@ -110,7 +111,7 @@ class Shop():
             city_name = element.text
             if city_name in expected_cities:
                 # Find the delete button in the same row
-                delete_button = element.find_element("xpath","./ancestor::tr//button[@class='delete-btn']")
+                delete_button = element.find_element("xpath","xpath","./ancestor::tr//button[@class='delete-btn']")
                 delete_button.click()
                 print(f"Deleted city: {city_name}")
                 
@@ -122,7 +123,51 @@ class Shop():
 
         return city_texts
 
-        # for column_header in column_headers:
-        #     # if column_header.text in city_list:
-        #         # self.selLib.click_button("xpath:(//*[@class='card-footer'])[" + str(i) + "]/button")
-        #     print(column_header.text)
+
+    @keyword(name="Card List Items")
+    def get_card_list_items(self, locator, expected_cities):
+        """
+        Get the list of items in the cart and delete matching cities
+        :param locator: locator of the city elements
+        :param expected_cities: list of expected city names to delete
+        :return: list of items in the cart
+        """
+        # Retrieve the city elements
+        city_elements = self.selLib.get_webelements(locator)
+
+        # Extract the text from each city element
+        # city_texts = [element.text for element in city_elements]
+
+        # Print the city texts for debugging
+        # print("City texts:", city_texts)
+
+        # Extract the text from each city element and organize into rows
+        rows = []
+        for element in city_elements:
+            city_name = element.text
+            row = {
+                "id": element.find_element("xpath","./preceding-sibling::td[3]").text,
+                "name": element.find_element("xpath","./preceding-sibling::td[2]").text,
+                "age": element.find_element("xpath","./preceding-sibling::td[1]").text,
+                "city": city_name,
+                "edit_button": element.find_element("xpath","./ancestor::tr//button[@class='edit-btn']"),
+                "delete_button": element.find_element("xpath","./ancestor::tr//button[@class='delete-btn']")
+            }
+            rows.append(row)
+            
+            if city_name in expected_cities:
+                print(f"Match found: {city_name}")
+                try:
+                    row["delete_button"].click()
+                    
+                    self.selLib.click_button("id:confirmDelete")
+                    
+                    print(f"Deleted city: {city_name}")
+                except NoSuchElementException as e:
+                    print(f"Error deleting city {city_name}: {e}")
+
+        # Print the rows for debugging
+        for row in rows:
+            print(f"Row: {row}")
+
+        return rows
