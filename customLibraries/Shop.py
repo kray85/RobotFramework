@@ -188,7 +188,7 @@ class Shop():
             except NoSuchElementException as e:
                 print(f"Error deleting row: {e}")
 
-        print(name_list)
+        # print(name_list)
         return name_list
 
     @keyword(name='Compare Customer Names')
@@ -208,8 +208,8 @@ class Shop():
                         delete_button = row.find_element("xpath", ".//td[5]/button[2]")
                         delete_button.click()
                         
+                        self.selLib.wait_until_element_is_visible("id:modal")
                         self.selLib.click_button("id:confirmDelete")
-                        print(f'Button element: {delete_button}')
                         print(f"Deleted row with name: {name}")
                 except NoSuchElementException as e:
                     print(f"Error deleting row with name {name}: {e}")
