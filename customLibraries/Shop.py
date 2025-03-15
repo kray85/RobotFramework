@@ -111,18 +111,18 @@ class Shop():
             city_name = element.text
             if city_name in expected_cities:
                 # Find the delete button in the same row
-                delete_button = element.find_element("xpath","xpath","./ancestor::tr//button[@class='delete-btn']")
+                delete_button = element.find_element(
+                    "xpath", "xpath", "./ancestor::tr//button[@class='delete-btn']")
                 delete_button.click()
                 print(f"Deleted city: {city_name}")
-                
+
                 # Wait for the modal to appear and click the confirm button
                 self.selLib.wait_until_element_is_visible("id:modal")
                 self.selLib.click_button("id:confirmDelete")
-                
+
                 print(f"Confirmed delete for city: {city_name}")
 
         return city_texts
-
 
     @keyword(name="Card List Items")
     def get_card_list_items(self, locator, expected_cities):
@@ -146,22 +146,22 @@ class Shop():
         for element in city_elements:
             city_name = element.text
             row = {
-                "id": element.find_element("xpath","./preceding-sibling::td[3]").text,
-                "name": element.find_element("xpath","./preceding-sibling::td[2]").text,
-                "age": element.find_element("xpath","./preceding-sibling::td[1]").text,
+                "id": element.find_element("xpath", "./preceding-sibling::td[3]").text,
+                "name": element.find_element("xpath", "./preceding-sibling::td[2]").text,
+                "age": element.find_element("xpath", "./preceding-sibling::td[1]").text,
                 "city": city_name,
-                "edit_button": element.find_element("xpath","./ancestor::tr//button[@class='edit-btn']"),
-                "delete_button": element.find_element("xpath","./ancestor::tr//button[@class='delete-btn']")
+                "edit_button": element.find_element("xpath", "./ancestor::tr//button[@class='edit-btn']"),
+                "delete_button": element.find_element("xpath", "./ancestor::tr//button[@class='delete-btn']")
             }
             rows.append(row)
-            
+
             if city_name in expected_cities:
                 print(f"Match found: {city_name}")
                 try:
                     row["delete_button"].click()
-                    
+
                     self.selLib.click_button("id:confirmDelete")
-                    
+
                     print(f"Deleted city: {city_name}")
                 except NoSuchElementException as e:
                     print(f"Error deleting city {city_name}: {e}")
@@ -171,3 +171,49 @@ class Shop():
             print(f"Row: {row}")
 
         return rows
+
+    @keyword(name='Get CustomerNames')
+    def get_web_elements(self, locator):
+
+        city_elements = self.selLib.get_webelements(locator)
+        print(f"Found {len(city_elements)} city elements")
+
+        name_list = []
+        for element in city_elements:
+            try:
+                get_name = element.find_element("xpath", "./td[2]")
+                name_list.append(get_name.text)
+
+                print(f"Name found: {get_name.text}")
+            except NoSuchElementException as e:
+                print(f"Error deleting row: {e}")
+
+        print(name_list)
+        return name_list
+
+    @keyword(name='Compare Customer Names')
+    def compare_customer_names(self, expected_names, actual_names):
+
+        # Find the intersection of the two lists
+        matching_names = list(set(expected_names) & set(actual_names))
+
+        if matching_names:
+            print(f"Matching names: {matching_names}")
+            for name in matching_names:
+                try:
+                    # Find all rows containing the matching name
+                    rows = self.selLib.get_webelements(f"xpath=//td[text()='{name}']/ancestor::tr")
+                    for row in rows:
+                        # Find the delete button in the same row using the provided XPath template
+                        delete_button = row.find_element("xpath", ".//td[5]/button[2]")
+                        delete_button.click()
+                        
+                        self.selLib.click_button("id:confirmDelete")
+                        print(f'Button element: {delete_button}')
+                        print(f"Deleted row with name: {name}")
+                except NoSuchElementException as e:
+                    print(f"Error deleting row with name {name}: {e}")
+        else:
+            print("No matching names found")
+
+        return matching_names
